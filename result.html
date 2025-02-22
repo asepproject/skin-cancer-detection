@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    
+    <h2>Predicted Class: {{ prediction }}</h2>
+    
+    <h3>Explanation:</h3>
+    <p>{{ explanation }}</p>
+    
+    <h3>Classification Report:</h3>
+    <pre>{{ report }}</pre>
+    
+    <h3>Sensitivity:</h3>
+    <ul>
+        {% for label, value in sensitivity.items() %}
+            <li>{{ label }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h3>Specificity:</h3>
+    <ul>
+        {% for label, value in specificity.items() %}
+            <li>{{ label }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h3>Confusion Matrix:</h3>
+    <img src="{{ url_for('static', filename='confusion_matrix.png') }}" alt="Confusion Matrix">
+</body>
+</html>
